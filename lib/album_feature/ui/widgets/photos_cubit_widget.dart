@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jsonplaceholder_full_project/album_feature/ui/state/get_photos_cubit/cubit/get_photos_cubit.dart';
+import 'package:jsonplaceholder_full_project/album_feature/ui/state/get_photos/get_photos_cubit.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
 
 class PhotosCubitWidget extends StatefulWidget {
@@ -17,9 +17,12 @@ class PhotosCubitWidget extends StatefulWidget {
   State<PhotosCubitWidget> createState() => _PhotosCubitWidgetState();
 }
 
-final GetPhotosCubit _photosCubit = injection<GetPhotosCubit>();
+
 
 class _PhotosCubitWidgetState extends State<PhotosCubitWidget> {
+
+  final GetPhotosCubit _photosCubit = injection<GetPhotosCubit>();
+  
   @override
   void initState() {
     super.initState();

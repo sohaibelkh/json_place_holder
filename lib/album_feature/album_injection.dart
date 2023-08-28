@@ -3,7 +3,7 @@ import 'package:jsonplaceholder_full_project/album_feature/data/data_source/albu
 import 'package:jsonplaceholder_full_project/album_feature/data/repository_impl/album_repository_impl.dart';
 import 'package:jsonplaceholder_full_project/album_feature/domain/repository/album_repository.dart';
 import 'package:jsonplaceholder_full_project/album_feature/domain/use_cases/album_case.dart';
-import 'package:jsonplaceholder_full_project/album_feature/ui/state/get_albums_cubit/cubit/get_albums_cubit.dart';
+import 'package:jsonplaceholder_full_project/album_feature/ui/state/get_albums/get_albums_cubit.dart';
 
 void injectAlbumsDependencies(GetIt injection) {
   injection.registerFactory<GetAlbumsCubit>(

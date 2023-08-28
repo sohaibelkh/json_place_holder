@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
-import 'package:jsonplaceholder_full_project/user_feature/ui/screens/users_list_screen.dart';
+
+import 'user_feature/ui/screens/user_list_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   initAppDependencyTree();

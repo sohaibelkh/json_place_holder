@@ -4,8 +4,9 @@ import 'package:jsonplaceholder_full_project/user_feature/data/repository_impl/u
 import 'package:jsonplaceholder_full_project/user_feature/domain/repository/user_repository.dart';
 import 'package:jsonplaceholder_full_project/user_feature/domain/use_cases/get_all_users_use_case.dart';
 import 'package:jsonplaceholder_full_project/user_feature/domain/use_cases/get_single_user_use_case.dart';
-import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_all_users_cubit/cubit/get_all_users_cubit.dart';
-import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_single_user_cubit/cubit/get_single_user_cubit.dart';
+import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_all_users/get_all_users_cubit.dart';
+import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_single_user/get_single_user_cubit.dart';
+
 
 void injectUsersDependencies(GetIt injection) {
   injection.registerFactory<GetAllUsersCubit>(
