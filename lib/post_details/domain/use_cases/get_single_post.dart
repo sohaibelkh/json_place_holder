@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:jsonplaceholder_full_project/core/domain/entities/all_failures.dart';
 import 'package:jsonplaceholder_full_project/post_details/domain/entities/posts_entity.dart';
 import 'package:jsonplaceholder_full_project/post_details/domain/repository/post_details_repository.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/entities/post_failure.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/domain/entities/post_failure.dart';
 
 
 class GetSinglePostCase {

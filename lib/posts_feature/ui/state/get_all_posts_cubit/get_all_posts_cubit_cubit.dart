@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/entities/posts_entity.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/use_cases/get_all_posts.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/domain/entities/posts_entity.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/domain/use_cases/get_all_posts.dart';
 
 part 'get_all_posts_cubit_state.dart';
 

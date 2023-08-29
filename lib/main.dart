@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
+import 'package:jsonplaceholder_full_project/routes/app_router.dart';
 
-import 'user_feature/ui/screens/user_list_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   initAppDependencyTree();
@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    AppRouter appRouter = AppRouter();
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: UsersListScreen(),
+      routerConfig: appRouter.config(),
     );
   }
 }

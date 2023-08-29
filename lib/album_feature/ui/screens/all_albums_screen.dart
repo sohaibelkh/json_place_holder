@@ -1,10 +1,13 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/album_feature/ui/state/get_albums/get_albums_cubit.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
+import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 
 import '../widgets/albums_list_view_item.dart';
 
+@RoutePage()
 class AllAlbumsScreen extends StatefulWidget {
   const AllAlbumsScreen({super.key, required this.userId});
 
@@ -49,8 +52,9 @@ class _AllAlbumsScreenState extends State<AllAlbumsScreen> {
               ),
             );
           } else if (state is GetAlbumsFailure) {
-            return Center(
-              child: Text(state.errMessage),
+            return UserFailureWidget(
+              message: state.errMessage,
+              onRetry: () async => _albumsCubit.loadAlbums(widget.userId),
             );
           } else if (state is GetAlbumsSuccess) {
             return ListView.builder(
@@ -62,13 +66,9 @@ class _AllAlbumsScreenState extends State<AllAlbumsScreen> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 9),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: AlbumsListViewItem(
-                      title: state.albums[index].title,
-                      albumId: 1,
-                      id: state.albums[index].userId,
-                    ),
+                  child: AlbumsListViewItem(
+                    title: state.albums[index].title,
+                    id: state.albums[index].userId,
                   ),
                 );
               },

@@ -1,9 +1,12 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
 import 'package:jsonplaceholder_full_project/constants.dart';
+import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 import 'package:jsonplaceholder_full_project/todo_feature/ui/state/get_all_todos/get_all_todos_cubit.dart';
 
+@RoutePage()
 class TodoListScreen extends StatefulWidget {
   const TodoListScreen({super.key, required this.userId});
 
@@ -13,10 +16,7 @@ class TodoListScreen extends StatefulWidget {
   State<TodoListScreen> createState() => _TodoListScreenState();
 }
 
-
-
 class _TodoListScreenState extends State<TodoListScreen> {
-
   final GetAllTodosCubit _cubit = injection<GetAllTodosCubit>();
   @override
   void initState() {
@@ -64,8 +64,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
               },
             );
           } else if (state is GetAllTodosFailure) {
-            return Center(
-              child: Text(state.errMessage),
+            return UserFailureWidget(
+              message: state.errMessage,
+              onRetry: () async => _cubit.loadAllTodos(widget.userId),
             );
           } else {
             return const SizedBox();

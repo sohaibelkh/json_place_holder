@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/data/models/exceptions.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/data/models/posts_model.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/data/models/exceptions.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/data/models/posts_model.dart';
 
 abstract class PostSource {
   Future<List<PostModel>> getAllPosts(int userId);

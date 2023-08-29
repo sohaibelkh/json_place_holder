@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/album_feature/ui/state/get_photos/get_photos_cubit.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
+import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 
 class PhotosCubitWidget extends StatefulWidget {
   const PhotosCubitWidget({
@@ -17,12 +18,9 @@ class PhotosCubitWidget extends StatefulWidget {
   State<PhotosCubitWidget> createState() => _PhotosCubitWidgetState();
 }
 
-
-
 class _PhotosCubitWidgetState extends State<PhotosCubitWidget> {
-
   final GetPhotosCubit _photosCubit = injection<GetPhotosCubit>();
-  
+
   @override
   void initState() {
     super.initState();
@@ -43,8 +41,12 @@ class _PhotosCubitWidgetState extends State<PhotosCubitWidget> {
             ),
           );
         } else if (state is GetPhotosFailure) {
-          return Center(
-            child: Text(state.errMessage),
+          return UserFailureWidget(
+            message: state.errMessage,
+            onRetry: () async => _photosCubit.loadPhotos(
+              albumId: widget.albumId,
+              id: widget.id,
+            ),
           );
         } else if (state is GetPhotosSuccess) {
           return ClipRRect(

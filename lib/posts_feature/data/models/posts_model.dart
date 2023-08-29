@@ -1,5 +1,7 @@
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/data/models/post_constants.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/entities/posts_entity.dart';
+
+
+import 'package:jsonplaceholder_full_project/posts_feature/data/models/post_constants.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/domain/entities/posts_entity.dart';
 
 class PostModel extends Posts {
  const PostModel({

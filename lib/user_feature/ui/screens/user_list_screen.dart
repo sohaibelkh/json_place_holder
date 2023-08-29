@@ -1,11 +1,14 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
 import 'package:jsonplaceholder_full_project/constants.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_all_users/get_all_users_cubit.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/screens/single_user_infos.dart';
+import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/widgets/users_list_view_item.dart';
 
+@RoutePage()
 class UsersListScreen extends StatefulWidget {
   const UsersListScreen({super.key});
 
@@ -13,10 +16,7 @@ class UsersListScreen extends StatefulWidget {
   State<UsersListScreen> createState() => _UsersListScreenState();
 }
 
-
 class _UsersListScreenState extends State<UsersListScreen> {
-
-
   final GetAllUsersCubit _cubit = injection<GetAllUsersCubit>();
 
   @override
@@ -50,8 +50,9 @@ class _UsersListScreenState extends State<UsersListScreen> {
               ),
             );
           } else if (state is GetAllUsersFailure) {
-            return Center(
-              child: Text(state.errMessage),
+            return UserFailureWidget(
+              message: state.errMessage,
+              onRetry: () async => _cubit.loadAllUsers(),
             );
           } else if (state is GetAllUsersSuccess) {
             return ListView.builder(

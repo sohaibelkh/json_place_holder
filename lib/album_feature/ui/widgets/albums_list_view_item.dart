@@ -3,11 +3,10 @@ import 'package:jsonplaceholder_full_project/album_feature/ui/widgets/photos_cub
 
 class AlbumsListViewItem extends StatelessWidget {
   const AlbumsListViewItem({
-    super.key, required this.title, required this.albumId, required this.id,
+    super.key, required this.title,  required this.id,
   });
 
   final String title;
-  final int albumId;
   final int id;
 
   @override
@@ -32,7 +31,7 @@ class AlbumsListViewItem extends StatelessWidget {
             ),
           ),
            PhotosCubitWidget(
-            albumId: albumId,
+            albumId: 1,
             id: id,
           ),
         ],

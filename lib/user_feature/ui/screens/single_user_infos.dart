@@ -1,13 +1,17 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/album_feature/ui/screens/all_albums_screen.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
 import 'package:jsonplaceholder_full_project/constants.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/screens/posts_list_screen.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/ui/screens/posts_list_screen.dart';
 import 'package:jsonplaceholder_full_project/todo_feature/ui/screens/todo_list_screen.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_single_user/get_single_user_cubit.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/widgets/custom_button.dart';
+import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 
+
+@RoutePage()
 class SingleUserInfos extends StatefulWidget {
   const SingleUserInfos({super.key, required this.id});
 
@@ -51,8 +55,9 @@ class _SingleUserInfosState extends State<SingleUserInfos> {
               ),
             );
           } else if (state is GetSingleUserFailure) {
-            return Center(
-              child: Text(state.errMessage),
+            return UserFailureWidget(
+              message: state.errMessage,
+              onRetry: () async => _cubit.loadSingleUser(widget.id),
             );
           } else if (state is GetSingleUserSuccess) {
             return Container(
@@ -159,7 +164,6 @@ class _SingleUserInfosState extends State<SingleUserInfos> {
                         MaterialPageRoute(
                           builder: (context) => PostsListScreen(
                             userId: state.users.first.id,
-                            username: state.users.first.name,
                           ),
                         ),
                       );

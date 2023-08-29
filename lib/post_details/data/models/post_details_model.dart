@@ -1,6 +1,6 @@
 
 import 'package:jsonplaceholder_full_project/post_details/domain/entities/posts_entity.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/data/models/post_constants.dart';
+import 'package:jsonplaceholder_full_project/posts_feature/data/models/post_constants.dart';
 
 class PostDetailsModel extends PostDetail {
  const PostDetailsModel({
