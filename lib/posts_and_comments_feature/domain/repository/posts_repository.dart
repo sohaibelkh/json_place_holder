@@ -4,8 +4,5 @@ import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/e
 
 abstract class PostRepository {
   Future<Either<Failure, List<Posts>>> getAllPosts(int userId);
-  Future<Either<Failure, List<Posts>>> getSinglePost({
-    required int id,
-    required int userId,
-  });
+  
 }

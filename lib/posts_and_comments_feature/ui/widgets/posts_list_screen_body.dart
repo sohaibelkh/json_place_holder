@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/screens/post_details_screen.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/state/get_all_posts_cubit/cubit/get_all_posts_cubit_cubit.dart';
+import 'package:jsonplaceholder_full_project/post_details/ui/screens/post_details_screen.dart';
+import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/state/get_all_posts_cubit/get_all_posts_cubit_cubit.dart';
 
 import 'list_view_item.dart';
 

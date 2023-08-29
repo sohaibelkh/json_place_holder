@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:jsonplaceholder_full_project/core/domain/entities/all_failures.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/entities/comment_failure.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/entities/comments_entity.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/domain/repository/comments_repository.dart';
+import 'package:jsonplaceholder_full_project/post_details/domain/entities/comment_failure.dart';
+import 'package:jsonplaceholder_full_project/post_details/domain/entities/comments_entity.dart';
+import 'package:jsonplaceholder_full_project/post_details/domain/repository/post_details_repository.dart';
 
 class GetSingleCommentCase {
-  final CommentRepository repository;
+  final PostDetailsRepository repository;
 
   GetSingleCommentCase(this.repository);
 

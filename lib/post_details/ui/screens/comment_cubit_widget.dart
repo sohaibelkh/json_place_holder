@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/state/get_single_comment_cubit/cubit/get_single_comment_cubit_cubit.dart';
+import 'package:jsonplaceholder_full_project/post_details/ui/state/get_single_comment_cubit/get_comment_cubit.dart';
 
 import 'comment_list_view_item.dart';
 
@@ -17,34 +17,34 @@ class CommentCubitWidget extends StatefulWidget {
   State<CommentCubitWidget> createState() => _CommentCubitWidgetState();
 }
 
-final GetSingleCommentCubitCubit _commentCubit =
-    injection<GetSingleCommentCubitCubit>();
+final GetCommentCubit _commentCubit =
+    injection<GetCommentCubit>();
 
 class _CommentCubitWidgetState extends State<CommentCubitWidget> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await _commentCubit.loadAllComments(widget.postId);
+      await _commentCubit.loadComment(widget.postId);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetSingleCommentCubitCubit, GetSingleCommentCubitState>(
+    return BlocBuilder<GetCommentCubit, GetCommentState>(
       bloc: _commentCubit,
       builder: (context, state) {
-        if (state is GetSingleCommentCubitLoading) {
+        if (state is GetCommentLoading) {
           return const Center(
             child: CircularProgressIndicator(
               color: Colors.blue,
             ),
           );
-        } else if (state is GetSingleCommentCubitFailure) {
+        } else if (state is GetCommentFailure) {
           return Center(
             child: Text(state.errMessage),
           );
-        } else if (state is GetSingleCommentCubitSuccess) {
+        } else if (state is GetCommentSuccess) {
           return Expanded(
             child: ListView.builder(
               physics: const BouncingScrollPhysics(),

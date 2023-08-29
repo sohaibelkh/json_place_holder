@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/widgets/post_detail_screen_body.dart';
+import 'package:jsonplaceholder_full_project/post_details/ui/screens/post_detail_screen_body.dart';
 
 class PostDetailScreen extends StatelessWidget {
   const PostDetailScreen({super.key, required this.id, required this.userId});

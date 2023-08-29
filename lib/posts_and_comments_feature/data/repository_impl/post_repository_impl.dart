@@ -30,23 +30,4 @@ class PostRepositoryImpl implements PostRepository {
       return left(InternetFailure());
     }
   }
-
-  @override
-  Future<Either<Failure, List<Posts>>> getSinglePost(
-      {required int id, required int userId}) async {
-    final bool connected = await internetConnectionChecker.hasConnection;
-    if (connected) {
-      try {
-        final List<PostModel> result =
-            await source.getSinglePost(userId: userId, id: id);
-        return right(result);
-      } on PostException catch (ex) {
-        return left(
-          PostFailure(ex.errMessage),
-        );
-      }
-    } else {
-      return left(InternetFailure());
-    }
-  }
 }

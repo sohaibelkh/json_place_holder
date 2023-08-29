@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
-import 'package:jsonplaceholder_full_project/posts_and_comments_feature/ui/state/get_single_post_cubit/cubit/get_single_post_cubit_cubit.dart';
+import 'package:jsonplaceholder_full_project/post_details/ui/state/get_single_post_cubit/get_single_post_cubit.dart';
 
 import 'comment_cubit_widget.dart';
 
@@ -16,33 +16,33 @@ class PostDetailScreenBody extends StatefulWidget {
   State<PostDetailScreenBody> createState() => _PostDetailScreenBodyState();
 }
 
-final GetSinglePostCubitCubit _postCubit = injection<GetSinglePostCubitCubit>();
+final GetSinglePostCubit _postCubit = injection<GetSinglePostCubit>();
 
 class _PostDetailScreenBodyState extends State<PostDetailScreenBody> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await _postCubit.loadSinglePost(userId: widget.userId, id: widget.id);
+      await _postCubit.loadPost(userId: widget.userId, id: widget.id);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetSinglePostCubitCubit, GetSinglePostCubitState>(
+    return BlocBuilder<GetSinglePostCubit, GetSinglePostState>(
       bloc: _postCubit,
       builder: (context, state) {
-        if (state is GetSinglePostCubitLoading) {
+        if (state is GetSinglePostLoading) {
           return const Center(
             child: CircularProgressIndicator(
               color: Colors.blue,
             ),
           );
-        } else if (state is GetSinglePostCubitFailure) {
+        } else if (state is GetSinglePostFailure) {
           return Center(
             child: Text(state.errMessage),
           );
-        } else if (state is GetSinglePostCubitSuccess) {
+        } else if (state is GetSinglePostSuccess) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -61,7 +61,7 @@ class _PostDetailScreenBodyState extends State<PostDetailScreenBody> {
                     title: Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Text(
-                        state.posts.first.title,
+                        state.post.first.title,
                         style: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class _PostDetailScreenBodyState extends State<PostDetailScreenBody> {
                       ),
                     ),
                     subtitle: Text(
-                      state.posts.first.body,
+                      state.post.first.body,
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.6),
                         fontWeight: FontWeight.w400,
@@ -80,7 +80,7 @@ class _PostDetailScreenBodyState extends State<PostDetailScreenBody> {
                 ),
               ),
               CommentCubitWidget(
-                postId: state.posts.first.id,
+                postId: state.post.first.id,
               ),
             ],
           );
