@@ -1,9 +1,10 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
+import 'package:jsonplaceholder_full_project/core/ui/routes/app_router.gr.dart';
 import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
-import 'package:jsonplaceholder_full_project/post_details/ui/screens/post_detail_screen.dart';
 import 'package:jsonplaceholder_full_project/posts_feature/ui/state/get_all_posts_cubit/get_all_posts_cubit_cubit.dart';
 
 import '../widgets/list_view_item.dart';
@@ -66,13 +67,10 @@ class _PostsListScreenState extends State<PostsListScreen> {
                   padding: const EdgeInsets.only(top: 8),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PostDetailScreen(
-                            id: state.posts[index].id,
-                            userId: state.posts[index].userId,
-                          ),
+                      context.pushRoute(
+                        PostDetailRoute(
+                          id: state.posts[index].id,
+                          userId: state.posts[index].userId,
                         ),
                       );
                     },

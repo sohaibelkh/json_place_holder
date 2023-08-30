@@ -3,7 +3,9 @@ import 'package:auto_route/auto_route.dart';
 
 import 'app_router.gr.dart';
 
-@AutoRouterConfig()
+@AutoRouterConfig(
+  replaceInRouteName: "Screen,Route",
+)
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
@@ -11,7 +13,7 @@ class AppRouter extends $AppRouter {
           page: UsersListRoute.page,
           initial: true,
         ),
-        AutoRoute(page: SingleUserInfos.page),
+        AutoRoute(page: SingleUserInfosRoute.page),
         AutoRoute(page: TodoListRoute.page),
         AutoRoute(page: AllAlbumsRoute.page),
         AutoRoute(page: PostsListRoute.page),

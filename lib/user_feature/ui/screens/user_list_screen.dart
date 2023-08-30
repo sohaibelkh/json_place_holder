@@ -1,10 +1,11 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
 import 'package:jsonplaceholder_full_project/constants.dart';
+import 'package:jsonplaceholder_full_project/core/ui/routes/app_router.gr.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_all_users/get_all_users_cubit.dart';
-import 'package:jsonplaceholder_full_project/user_feature/ui/screens/single_user_infos.dart';
 import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/widgets/users_list_view_item.dart';
 
@@ -66,13 +67,8 @@ class _UsersListScreenState extends State<UsersListScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SingleUserInfos(
-                            id: state.users[index].id,
-                          ),
-                        ),
+                      context.pushRoute(
+                        SingleUserInfosRoute(id: state.users[index].id),
                       );
                     },
                     child: UsersListViewItem(

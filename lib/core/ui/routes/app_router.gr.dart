@@ -59,11 +59,11 @@ abstract class $AppRouter extends _i7.RootStackRouter {
         ),
       );
     },
-    SingleUserInfos.name: (routeData) {
+    SingleUserInfosRoute.name: (routeData) {
       final args = routeData.argsAs<SingleUserInfosArgs>();
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i4.SingleUserInfos(
+        child: _i4.SingleUserInfosScreen(
           key: args.key,
           id: args.id,
         ),
@@ -208,14 +208,14 @@ class PostsListRouteArgs {
 }
 
 /// generated route for
-/// [_i4.SingleUserInfos]
-class SingleUserInfos extends _i7.PageRouteInfo<SingleUserInfosArgs> {
-  SingleUserInfos({
+/// [_i4.SingleUserInfosScreen]
+class SingleUserInfosRoute extends _i7.PageRouteInfo<SingleUserInfosArgs> {
+  SingleUserInfosRoute({
     _i8.Key? key,
     required int id,
     List<_i7.PageRouteInfo>? children,
   }) : super(
-          SingleUserInfos.name,
+          SingleUserInfosRoute.name,
           args: SingleUserInfosArgs(
             key: key,
             id: id,

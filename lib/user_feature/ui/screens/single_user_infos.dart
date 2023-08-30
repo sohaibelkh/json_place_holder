@@ -1,27 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jsonplaceholder_full_project/album_feature/ui/screens/all_albums_screen.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
 import 'package:jsonplaceholder_full_project/constants.dart';
-import 'package:jsonplaceholder_full_project/posts_feature/ui/screens/posts_list_screen.dart';
-import 'package:jsonplaceholder_full_project/todo_feature/ui/screens/todo_list_screen.dart';
+import 'package:jsonplaceholder_full_project/core/ui/routes/app_router.gr.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/state/get_single_user/get_single_user_cubit.dart';
 import 'package:jsonplaceholder_full_project/user_feature/ui/widgets/custom_button.dart';
 import 'package:jsonplaceholder_full_project/core/ui/widgets/user_failure_widget.dart';
 
-
 @RoutePage()
-class SingleUserInfos extends StatefulWidget {
-  const SingleUserInfos({super.key, required this.id});
+class SingleUserInfosScreen extends StatefulWidget {
+  const SingleUserInfosScreen({super.key, required this.id});
 
   final int id;
 
   @override
-  State<SingleUserInfos> createState() => _SingleUserInfosState();
+  State<SingleUserInfosScreen> createState() => _SingleUserInfosScreenState();
 }
 
-class _SingleUserInfosState extends State<SingleUserInfos> {
+class _SingleUserInfosScreenState extends State<SingleUserInfosScreen> {
   final GetSingleUserCubit _cubit = injection<GetSingleUserCubit>();
 
   @override
@@ -129,12 +126,9 @@ class _SingleUserInfosState extends State<SingleUserInfos> {
                   const SizedBox(height: 35),
                   CustomButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TodoListScreen(
-                            userId: state.users.first.id,
-                          ),
+                      context.pushRoute(
+                        TodoListRoute(
+                          userId: state.users.first.id,
                         ),
                       );
                     },
@@ -144,13 +138,8 @@ class _SingleUserInfosState extends State<SingleUserInfos> {
                   const SizedBox(height: 16),
                   CustomButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AllAlbumsScreen(
-                            userId: state.users.first.id,
-                          ),
-                        ),
+                      context.pushRoute(
+                        AllAlbumsRoute(userId: state.users.first.id),
                       );
                     },
                     color: Colors.green,
@@ -159,12 +148,9 @@ class _SingleUserInfosState extends State<SingleUserInfos> {
                   const SizedBox(height: 16),
                   CustomButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PostsListScreen(
-                            userId: state.users.first.id,
-                          ),
+                      context.pushRoute(
+                        PostsListRoute(
+                          userId: state.users.first.id,
                         ),
                       );
                     },

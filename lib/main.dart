@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jsonplaceholder_full_project/app_dependency_tree.dart';
-import 'package:jsonplaceholder_full_project/routes/app_router.dart';
+import 'package:jsonplaceholder_full_project/core/ui/routes/app_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
